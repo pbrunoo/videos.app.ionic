@@ -7,6 +7,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Bruno</h1>
-  <p>Teste loren ups</p>
+  <!-- Default Searchbar -->
+<ion-searchbar placeholder="Buscar"></ion-searchbar>
+<!-- List of Text Items -->
+<ion-list>
+  <ion-item lines="full">
+    <ion-thumbnail slot="start">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/h5UzYZquMwO9FVn15R2eK2itmHu.jpg">
+    </ion-thumbnail>
+    <ion-label class="ion-text-wrap">
+      <div>
+        <h1>Venon 2 (2021)</h1>
+        <p>07/10/2021 1h 37m.</p>
+        <p>Ficção científica, Ação, Aventura</p>
+      </div>
+    </ion-label>
+    <ion-chip color="success" outline="">
+      <ion-label>76%</ion-label>
+    </ion-chip>
+  </ion-item>
+</ion-list>
+
 </ion-content>
