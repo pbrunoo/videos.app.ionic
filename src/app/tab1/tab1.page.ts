@@ -1,6 +1,8 @@
+import { DadosService } from './../services/dados.service';
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { IFilme } from '../models/iFilme.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -17,7 +19,8 @@ export class Tab1Page {
       duracao: '2h 35m',
       classificacao: 80,
       generos: ['Ação', 'Aventura', 'Ficção científica'],
-      image: 'https://www.themoviedb.org/t/p/w440_and_h660_face/eDHOutMxLMgComnVhUK0Xfwunu5.jpg'
+      image: 'https://www.themoviedb.org/t/p/w440_and_h660_face/eDHOutMxLMgComnVhUK0Xfwunu5.jpg',
+      pagina: '/eternos'
     },
     {
       nome: 'Venon 2 ',
@@ -25,11 +28,22 @@ export class Tab1Page {
       duracao: '1h 37m',
       classificacao: 76,
       generos: ['Ação', 'Aventura', 'Ficção científica'],
-      image: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/h5UzYZquMwO9FVn15R2eK2itmHu.jpg'
+      image: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/h5UzYZquMwO9FVn15R2eK2itmHu.jpg',
+      pagina: '/venon'
     }
   ];
 
-  constructor(public alertController: AlertController) {}
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public router: Router
+  ) {}
+
+  exibirFilme(filme: IFilme) {
+    this.dadosService.guardarDados('filme', filme);
+    this.router.navigateByUrl('/dados-filme');
+  }
 
   async exibirAlertFavorit() {
     const alert = await this.alertController.create({
